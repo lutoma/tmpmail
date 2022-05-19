@@ -1,0 +1,17 @@
+FROM python:3.10.4-alpine
+LABEL maintainer="lukas@fnordserver.eu"
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /app
+
+COPY pyproject.toml .
+COPY poetry.lock .
+
+RUN apk add --no-cache libffi libffi-dev libpq libpq-dev build-base
+RUN pip install --no-cache-dir poetry
+RUN poetry install
+RUN apk del --purge libffi-dev libpq-dev build-base
+
+COPY . .
+
+CMD ["poetry", "run", "salmon", "start", "--no-daemon"]

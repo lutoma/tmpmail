@@ -16,6 +16,12 @@
 
 			<button class="btn btn-primary" type="submit" @click.stop.prevent="openInbox()">Check mail</button>
 		</div>
+
+		<div class="mt-5">
+			<em>Hint:</em> You can also use the API directly from the command line:<br>
+				Retrieve inbox: <code>curl -s https://api.tmpmail.ohai.is/inbox/&lt;inbox&gt;@p25.li | jq .</code><br>
+				Retrieve message: <code>curl -s https://api.tmpmail.ohai.is/email/&lt;id&gt; | jq .</code>
+		</div>
 	</div>
 </template>
 

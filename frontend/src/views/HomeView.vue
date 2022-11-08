@@ -6,9 +6,12 @@
 		<h1 class="display-1 mb-3">tmpmail</h1>
 
 		<div class="name-form">
-			<div class="form-floating">
-				<input v-on:keyup.enter="openInbox()" v-model="name" type="text" class="form-control" id="floatingInput" placeholder="Inbox name" autofocus>
-				<label for="query">Inbox name</label>
+			<div class="input-group">
+				<div class="form-floating">
+					<input v-on:keyup.enter="openInbox()" v-model="name" type="text" class="form-control" id="floatingInput" placeholder="Inbox name" autofocus>
+					<label for="query">Inbox name</label>
+				</div>
+				<div class="input-group-text">@p25.li</div>
 			</div>
 
 			<button class="btn btn-primary" type="submit" @click.stop.prevent="openInbox()">Check mail</button>
@@ -44,15 +47,12 @@ export default {
 		display: flex;
 		flex-direction: row;
 
-		.form-floating {
+		.input-group {
 			flex-grow: 1;
-
-			input {
-				width: 100%;
-			}
 		}
 
 		button {
+			flex-basis: 160px;
 			margin-left: 1rem;
 			padding-left: 1.5rem;
 			padding-right: 1.5rem;

@@ -32,7 +32,7 @@
 					<strong>From: {{ email.headers.From }}</strong><br />
 					<strong>To: {{ email.headers.To }}</strong><br />
 					<strong>Date: {{ email.headers.Date }}</strong><br />
-					<a :href="`https://api.tmpmail.ohai.su/email/${email.id}/raw`" target="_blank" rel="noopener">Raw</a>
+					<a :href="`https://api.tmpmail.ohai.is/email/${email.id}/raw`" target="_blank" rel="noopener">Raw</a>
 
 					<p class="mt-4" style="white-space: pre-line;">{{ email.text }}</p>
 				</template>
@@ -43,8 +43,6 @@
 </template>
 
 <script>
-import {useRoute} from "vue-router"
-
 export default {
   data: () => ({
     emails: null,
@@ -63,12 +61,12 @@ export default {
 
   methods: {
     async fetchInbox() {
-      const url = `https://api.tmpmail.ohai.su/inbox/${this.$route.params.name}@${this.$route.params.domain}`
+      const url = `https://api.tmpmail.ohai.is/inbox/${this.$route.params.name}@${this.$route.params.domain}`
       this.emails = await (await fetch(url)).json()
     },
 
     async fetchEmail() {
-      const url = `https://api.tmpmail.ohai.su/email/${this.openUUID}`
+      const url = `https://api.tmpmail.ohai.is/email/${this.openUUID}`
       this.email = await (await fetch(url)).json()
     }
   }
